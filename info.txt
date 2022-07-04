@@ -1,3 +1,4 @@
 composer global require laravel/installer
 laravel new lara
 php artisan make:controller AnimalController
+views are in ./resources/views ...with.blade.php
