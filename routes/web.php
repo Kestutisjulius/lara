@@ -23,3 +23,6 @@ Route::get('/barsukas', [AC::class, 'barsukas']);
 Route::get('/briedis/{id}', [AC::class, 'briedis']);
 Route::get('/suma/{s1}/{s2?}', [Sum::class, 'suma']);
 
+Route::get('/skirtumas', [Sum::class, 'skirtumas'])->name('forma');
+Route::post('/skirtumas', [Sum::class, 'skaiciuoti'])->name('skaiciuokle');
+

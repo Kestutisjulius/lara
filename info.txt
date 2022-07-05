@@ -1,4 +1,6 @@
 composer global require laravel/installer
 laravel new lara
 php artisan make:controller AnimalController
+php artisan make:model Color --all
+php artisan migrate
 views are in ./resources/views ...with.blade.php
