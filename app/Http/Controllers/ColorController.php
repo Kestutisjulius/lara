@@ -3,83 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Color;
-use App\Http\Requests\StoreColorRequest;
-use App\Http\Requests\UpdateColorRequest;
+use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index() //READ -> GET/All
+    {
+        $colors = Color::all();
+        return view('color.index', ['colors' => $colors]);
+    }
+
+    public function create() //FORM-GET
+    {
+        return view('color.create');
+    }
+
+    public function store(Request $request) //CREATE-POST {BODY}
+    {
+        $color = new Color;
+        $color->color = $request->create_color_input;
+        $color->save();
+        return redirect()->route('colors_index');
+    }
+
+    public function show(Color $color) //READ -> GET/ONE {param}
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function edit(Color $color) //GET {param}
+    {
+        return view('color.edit', ['color'=> $color]);
+    }
+
+    public function update(Request $request, Color $color) //PUT - UPDATE {body/param}
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreColorRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreColorRequest $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Color  $color
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Color $color)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Color  $color
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Color $color)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateColorRequest  $request
-     * @param  \App\Models\Color  $color
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateColorRequest $request, Color $color)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Color  $color
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Color $color)
+    public function destroy(Color $color) //POST - DELETE{param}
     {
         //
     }

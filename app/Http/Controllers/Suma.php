@@ -30,6 +30,7 @@ class Suma extends Controller
     {
         $res = $request->x - $request->y;
         $color = new Color;
+        $color->doMagic();
         $color->color = $res;
         $color->save();
         //$request->session()->put('res', $res); //sesija PUT ilgalaike
