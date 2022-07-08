@@ -5,7 +5,7 @@
             <input type="color" name="create_color_input" value="{{$color->color}}"/>
             @csrf
             @method('put')
-            <button class="btn btn-primary" type="submit" >edit</button>
+            <button class="btn btn-primary" type="submit" >save</button>
 
         </form>
     </ul>

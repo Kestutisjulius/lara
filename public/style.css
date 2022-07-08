@@ -3,13 +3,13 @@ form, li {
 }
 ul{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: nowrap;
 }
 .color-box{
     margin: 5px;
-    width: 70px;
-    height: 50px;
+    width: 65px;
+    height: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -24,4 +24,35 @@ form {
     padding: 10px;
     border: 1px solid crimson;
 
+}
+.btn-sm{
+    border: none;
+    height: 25px;
+    align-items: center;
+
+
+
+}
+.destroyClass{
+    margin: 0;
+    padding: 0px;
+}
+.bankContainer{
+    display: inline-block;
+    width: 100vw;
+}
+.bankTop{
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+}
+.bankTable{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+}
+.bankCreate{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }

@@ -39,12 +39,15 @@ class ColorController extends Controller
 
     public function update(Request $request, Color $color) //PUT - UPDATE {body/param}
     {
-        //
+        $color->color = $request->create_color_input;
+        $color->save();
+        return redirect()->route('colors_index');
     }
 
 
     public function destroy(Color $color) //POST - DELETE{param}
     {
-        //
+        $color->delete();
+        return redirect()->route('colors_index');
     }
 }
