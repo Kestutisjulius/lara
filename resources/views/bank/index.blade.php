@@ -1,5 +1,11 @@
 @extends('main')
 @section('content')
+
+    @if($msg !== '')
+        <h1>{{$msg}}</h1>
+    @endif
+
+
     <div class="bankContainer">
     <div class="bankTop">accounts manager</div>
     <div class="bankTable">
@@ -22,8 +28,19 @@
             <td>{{$account->person_code}}</td>
             <td>{{$account->bank_code}}</td>
             <td>{{$account->amount}}</td>
-            <td>edit|delete|transfer</td>
+            <td><a href="{{route('account_edit', $account)}}">edit</a>|
+
+                <form class="destroyAccount" method="post" action="{{route('account_delete', $account)}}">
+                    @csrf
+                    @method('delete')
+                    <button class="btn-sm btn-danger btn" type="submit" >destroy</button>
+
+                </form>
+
+                &#32 | <a href="{{route('bank_transfer', $account)}}">transfer</a></td>
+        </tr>
             @empty
+                <tr>
                 <th scope="row">no Data</th>
                 <td>no Data</td>
                 <td>no Data</td>
@@ -35,6 +52,7 @@
         </tbody>
 
     </table>
+        <div class="linkBank"><a href="{{route('bank_create')}}">Add Account</a></div>
     </div>
     </div>
 

@@ -25,6 +25,20 @@ form {
     border: 1px solid crimson;
 
 }
+.bankCreate{
+    margin-top: 0;
+    border: none;
+    background-color: #e2e8f0;
+    display: flex;
+    justify-content: flex-start;
+}
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+.bankH1{
+    text-align: center;
+    background-color: dimgrey;
+}
 .btn-sm{
     border: none;
     height: 25px;
@@ -52,7 +66,20 @@ form {
     margin-top: 50px;
 }
 .bankCreate{
-    display: flex;
+    justify-content: space-between;
     flex-wrap: nowrap;
     flex-direction: row;
+
+}
+.linkBank{
+    text-align: center;
+}
+.destroyAccount{
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline;
+    width: 45px;
+    font-size: 12px;
+    vertical-align: text-top;
 }
