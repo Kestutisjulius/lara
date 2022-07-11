@@ -2,7 +2,7 @@
 @section('content')
 
     <h1 class="bankH1"> EDIT record </h1>
-    <form class="bankCreate mb-3" method="post" action="{{route('account_update', $bank)}}">
+    <form class="bankCreate mb-3" method="post" action="{{route('bank_update', $bank)}}">
         <table>
             <tr>
                 <td><input name="name" type="text" value="{{$bank->name}}"></td>
