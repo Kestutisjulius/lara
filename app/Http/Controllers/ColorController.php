@@ -24,7 +24,7 @@ class ColorController extends Controller
         $color = new Color;
         $color->color = $request->create_color_input;
         $color->save();
-        return redirect()->route('colors_index');
+        return redirect()->route('colors_index')->with('success', 'WINNER! creates nice color');
     }
 
     public function show(Color $color) //READ -> GET/ONE {param}
@@ -48,6 +48,6 @@ class ColorController extends Controller
     public function destroy(Color $color) //POST - DELETE{param}
     {
         $color->delete();
-        return redirect()->route('colors_index');
+        return redirect()->route('colors_index')->with('deleted', '!Color gone');
     }
 }
