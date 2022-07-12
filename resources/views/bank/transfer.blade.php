@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main_bank')
 @section('content')
 
     <h1 class="bankH1"> transfer money </h1>

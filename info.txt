@@ -3,4 +3,6 @@ laravel new lara
 php artisan make:controller AnimalController
 php artisan make:model Color --all
 php artisan migrate
+php artisan migrate:status
 views are in ./resources/views ...with.blade.php
+php artisan migrate:rollback --path=database/migrations/2022_07_05_175806_create_colors_table.php

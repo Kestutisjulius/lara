@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main_bank')
 @section('content')
 
     @if($msg !== '')

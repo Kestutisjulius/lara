@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main_bank')
 @section('content')
 
         <h1 class="bankH1"> create new record to new client</h1>

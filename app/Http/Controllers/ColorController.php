@@ -23,6 +23,7 @@ class ColorController extends Controller
     {
         $color = new Color;
         $color->color = $request->create_color_input;
+        $color->title = $request->color_title ?? 'no title';
         $color->save();
         return redirect()->route('colors_index')->with('success', 'WINNER! creates nice color');
     }
