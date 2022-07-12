@@ -12,7 +12,7 @@
 <ul>
     @forelse($colors as $color)
     <li>
-        <div class="color-box" style="background-color: {{$color->color}}">{{$color->color}}
+        <div class="color-box" style="background-color: {{$color->color}}">
         <a style="background-color: blue" href="{{route('colors_edit', $color)}}">edit</a>
         <a style="background-color: #fff20a" href="{{route('colors_show', $color->id)}}">show</a>
             <form class="destroyClass" method="post" action="{{route('colors_delete', $color)}}">

@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimalController AS AC;
 use App\Http\Controllers\Suma AS Sum;
 use App\Http\Controllers\ColorController AS Color;
 use App\Http\Controllers\BankController AS Bank;
+use App\Http\Controllers\WildAnimalController AS Animal;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +36,6 @@ Route::put('/bank/{bank}', [Bank::class, 'update'])->name('bank_update');
 Route::delete('/bank/{bank}', [Bank::class, 'destroy'])->name('account_delete');
 Route::get('/bank/transfer/{bank}', [Bank::class, 'transfer'])->name('bank_transfer');
 Route::put('/bank/transfer/{bank}', [Bank::class, 'transferDo'])->name('transfer_do');
+//Animal
+Route::get('/animals', [Animal::class, 'index'])->name('animals_index');
+Route::get('/animals/create', [Animal::class, 'create'])->name('animals_create');
