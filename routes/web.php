@@ -19,11 +19,13 @@ Route::get('/skirtumas', [Sum::class, 'skirtumas'])->name('forma');
 Route::post('/skirtumas', [Sum::class, 'skaiciuoti'])->name('skaiciuokle');
 //COLOR:
 Route::get('/colors', [Color::class, 'index'])->name('colors_index');
+Route::get('/colors/show/{id}', [Color::class, 'show'])->name('colors_show');
 Route::get('/colors/create', [Color::class, 'create'])->name('colors_create');
 Route::post('/colors', [Color::class, 'store'])->name('colors_store');
 Route::get('/colors/edit/{color}', [Color::class, 'edit'])->name('colors_edit');
 Route::put('/colors/{color}', [Color::class, 'update'])->name('colors_update');
 Route::delete('/colors/{color}', [Color::class, 'destroy'])->name('colors_delete');
+
 //BANK:
 Route::get('/bank', [Bank::class, 'index'])->name('bank_index');
 Route::get('/bank/create', [Bank::class, 'create'])->name('bank_create');

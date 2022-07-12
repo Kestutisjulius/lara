@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 class ColorController extends Controller
 {
 
-    public function index() //READ -> GET/All
+    public function index(Request $request) //READ -> GET/All
     {
-        $colors = Color::all();
+
+       // $colors = Color::all()->sortByDesc('title');
+       // $colors = Color::orderBy('title')->get();
+        //$colors = Color::orderBy('title')->where('id','!=', '2')->get();
+        $colors = match ($request->sort)
+        {
+            'asc' => Color::orderBy('title', 'asc')->get(),
+            'desc' => Color::orderBy('title', 'desc')->get(),
+
+            default => Color::all()
+        };
         return view('color.index', ['colors' => $colors]);
     }
 
@@ -28,9 +38,10 @@ class ColorController extends Controller
         return redirect()->route('colors_index')->with('success', 'WINNER! creates nice color');
     }
 
-    public function show(Color $color) //READ -> GET/ONE {param}
+    public function show(int $colorId) //READ -> GET/ONE {param}
     {
-        //
+        $color = Color::where('id', $colorId)->first();
+        return view('color.show', ['color'=> $color]);
     }
 
     public function edit(Color $color) //GET {param}
@@ -41,6 +52,7 @@ class ColorController extends Controller
     public function update(Request $request, Color $color) //PUT - UPDATE {body/param}
     {
         $color->color = $request->create_color_input;
+        $color->title = $request->color_title ?? 'no title';
         $color->save();
         return redirect()->route('colors_index');
     }
