@@ -39,3 +39,8 @@ Route::put('/bank/transfer/{bank}', [Bank::class, 'transferDo'])->name('transfer
 //Animal
 Route::get('/animals', [Animal::class, 'index'])->name('animals_index');
 Route::get('/animals/create', [Animal::class, 'create'])->name('animals_create');
+Route::post('/animals', [Animal::class, 'store'])->name('animals_store');
+Route::get('/animals/show/{id}', [Animal::class,'show'])->name('animal_show');
+Route::get('/animal/edit/{animal}', [Animal::class, 'edit'])->name('animal_edit');
+Route::delete('/animal/{animal}', [Animal::class, 'destroy'])->name('animal_kill');
+Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update');

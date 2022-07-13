@@ -2,77 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\WildAnimal as Animal;
-use App\Http\Requests\StoreWildAnimalRequest;
 use App\Http\Requests\UpdateWildAnimalRequest;
+use Illuminate\Http\Request;
 
 class WildAnimalController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('animal.index', ['animals'=> Animal::all()]);
+        $animals = match ($request->sort)
+        {
+            'asc' => Animal::orderBy('name', 'asc')->get(),
+            'desc' => Animal::orderBy('name', 'desc')->get(),
+            default => Animal::all()
+        };
+        return view('animal.index', ['animals'=> $animals]);
     }
 
     public function create()
     {
 
-        return view('animal.create');
+        return view('animal.create', ['colors'=>Color::all()]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreWildAnimalRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreWildAnimalRequest $request)
+    public function store(Request $request)
     {
-        //
+        $animal = new Animal;
+
+        $animal->name = $request->animal_name;
+
+        $animal->color_id = $request->color_id;
+
+        $animal->save();
+
+        return redirect()->route('animals_index')->with('success', 'Animal are saved!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\WildAnimal  $wildAnimal
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WildAnimal $wildAnimal)
+    public function show(int $animal_id)
     {
-        //
+        $color = Color::where('id', $animal_id)->first();
+        $animal = Animal::where('id', $animal_id)->first();
+        return view('animal.show', ['color' => $color, 'animal'=> $animal]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\WildAnimal  $wildAnimal
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(WildAnimal $wildAnimal)
+    public function edit(Animal $animal)
     {
-        //
+        $colors = Color::all();
+
+        return view('animal.edit', [
+            'animal' => $animal,
+            'colors' => $colors
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateWildAnimalRequest  $request
-     * @param  \App\Models\WildAnimal  $wildAnimal
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateWildAnimalRequest $request, WildAnimal $wildAnimal)
+    public function update(Request $request, Animal $animal)
     {
-        //
+
+        $animal->name = $request->animal_name;
+
+        $animal->color_id = $request->color_id;
+
+        $animal->save();
+
+        return redirect()->route('animals_index')->with('success', 'updated beast!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\WildAnimal  $wildAnimal
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(WildAnimal $wildAnimal)
+    public function destroy(Animal $animal)
     {
-        //
+        $animal->delete();
+
+        return redirect()->route('animals_index')->with('deleted', 'Animal is dead :(');
     }
 }

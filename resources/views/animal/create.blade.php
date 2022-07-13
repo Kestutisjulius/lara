@@ -1,12 +1,17 @@
 @extends('main_animals')
 @section('content')
+    <h1>Animal Create</h1>
     <ul>
-        <form class="mb-3" method="post" action="{{route('animals_store')}}">
-            <input type="text" name="name"/>
-            <input type="text" name="color_title"/>
-            @csrf
-            <button class="btn btn-primary" type="submit" >create</button>
+        <form action="{{route('animals_store')}}" method="post">
+            <input type="text" name="animal_name" />
+            <select name="color_id">
+                @foreach($colors as $color)
+                    <option value="{{$color->id}}">{{$color->title}}</option>
+                @endforeach
+            </select>
 
+            @csrf
+            <button type="submit">I found Animal!</button>
         </form>
     </ul>
 @endsection
