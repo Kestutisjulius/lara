@@ -3,8 +3,8 @@
 
     <ul>
         @forelse($animals as $animal)
-            <li>
-                opa
+            <li style="background-color: {{$animal->id}}">
+                {{$animal->name}}
             </li>
         @empty
             <li>No Animals, no LIFE</li>

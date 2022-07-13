@@ -16,6 +16,7 @@ class WildAnimalController extends Controller
 
     public function create()
     {
+
         return view('animal.create');
     }
 

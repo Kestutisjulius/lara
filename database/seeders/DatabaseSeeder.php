@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $colors = collect(['crimson', 'laguna']);
+        $colors = collect(['crimson', 'green']);
         do{
         $color = $faker->safeColorName;
             $colors->push($color);

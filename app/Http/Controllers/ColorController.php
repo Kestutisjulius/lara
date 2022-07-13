@@ -11,9 +11,9 @@ class ColorController extends Controller
     public function index(Request $request) //READ -> GET/All
     {
 
-       // $colors = Color::all()->sortByDesc('title');
-       // $colors = Color::orderBy('title')->get();
-        //$colors = Color::orderBy('title')->where('id','!=', '2')->get();
+        // $colors = Color::all()->sortByDesc('title');
+        // $colors = Color::orderBy('title')->get();
+        // $colors = Color::orderBy('title')->where('id','!=', '2')->get();
         $colors = match ($request->sort)
         {
             'asc' => Color::orderBy('title', 'asc')->get(),
