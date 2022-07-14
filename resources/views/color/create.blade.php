@@ -1,12 +1,29 @@
 @extends('layouts.app')
 @section('content')
-    <ul>
-        <form class="mb-3" method="post" action="{{route('colors_store')}}">
-        <input type="color" name="create_color_input"/>
-        <input type="text" name="color_title"/>
-            @csrf
-            <button class="btn btn-primary" type="submit" >create</button>
-
-        </form>
-    </ul>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Add Color</h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{route('colors_store')}}" method="post">
+                            <div class="form-group">
+                                <label>Color name</label>
+                                <input class="form-control" type="text" name="color_title" />
+                            </div>
+                            <div class="form-group">
+                                <label class="mt-2">Color</label>
+                                <input class="form-control" type="color" name="create_color_input" />
+                            </div>
+                            @csrf
+                            @method('post')
+                            <button class="btn btn-outline-success mt-4" type="submit">save this color</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

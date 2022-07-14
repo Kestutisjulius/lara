@@ -1,32 +1,48 @@
 @extends('layouts.app')
 @section('content')
-    <div style="margin-left: 35px; display: inline">
-    <a href="{{route('animals_index', ['sort'=>'asc'])}}">A-Z</a>
-    </div>
-    <div style="margin-left: 35px; display: inline">
-    <a href="{{route('animals_index', ['sort'=>'desc'])}}">Z-A</a>
-    </div>
-    <div style="margin-left: 35px; display: inline">
-    <a href="{{route('animals_index', ['sort'=>'res'])}}">RESET</a>
-    </div>
-<ul>
-    @forelse($animals as $animal)
-    <li>
-        <div class="animal-box" style="background-color: {{$animal->color->color}}">
-        <a style="background-color: blue" href="{{route('animal_edit', $animal)}}">edit</a>
-        <a style="background-color: #fff20a" href="{{route('animal_show', $animal->id)}}">show</a>
-            <form class="destroyClass" method="post" action="{{route('animal_kill', $animal)}}">
-                @csrf
-                @method('delete')
-                <button class="btn btn-danger btn-sm" type="submit" >destroy</button>
 
-            </form>
-        <h6>{{$animal->name}}</h6>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>My animals</h1>
+                        <div>
+                            <a href="{{route('animals_index', ['sort' => 'asc'])}}">A to Z</a>
+                            <a href="{{route('animals_index', ['sort' => 'desc'])}}">Z to A</a>
+                            <a href="{{route('animals_index')}}">Reset</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            @forelse($animals as $animal)
+                                <li class="list-group-item">
+                                    <div class="color-bin">
+                                        <div class="color-box" style="background:{{$animal->color->color}};">
+                                            <h2>{{$animal->name}}</h2>
+                                        </div>
+                                        <div class="controls">
+                                            <a class="btn btn-outline-primary m-2" href="{{route('animal_show', $animal->id)}}">Show</a>
+
+                                            <a class="btn btn-outline-success m-2" href="{{route('animal_edit', $animal)}}">Edit</a>
+                                            <form class="delete" action="{{route('animal_kill', $animal)}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-outline-danger m-2">Kill</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            @empty
+                                <li class="list-group-item">No colors, no life.</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    </li>
-    @empty
-        <li>No Animals, no LIFE</li>
-    @endforelse
-</ul>
+    </div>
 
 @endsection
+

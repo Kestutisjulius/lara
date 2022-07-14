@@ -1,21 +1,27 @@
 @extends('layouts.app')
 @section('content')
-    <ul>
-
-            <li>
-                <div class="animal-box" style="background-color: {{$animal->color->color}}">
-                    <a href="{{route('animal_edit', $animal)}}">edit</a>
-                    <form class="destroyClass" method="post" action="{{route('animal_kill', $animal)}}">
-                        @csrf
-                        @method('delete')
-                        <button class="btn btn-danger btn-sm" type="submit" >kill</button>
-
-                    </form>
-                    <h6>{{$animal->name}}</h6>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" style="background:{{$color->color}};">
+                        <h1 class="nice">{{$animal->name}}</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="color-bin">
+                            <div class="controls">
+                                <a class="btn btn-outline-success m-2" href="{{route('animal_edit', $animal)}}">Edit</a>
+                                <form class="delete" action="{{route('animal_kill', $animal)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-outline-danger m-2">Kill</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </li>
-
-
-    </ul>
+            </div>
+        </div>
+    </div>
 
 @endsection

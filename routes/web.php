@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController AS AC;
 use App\Http\Controllers\Suma AS Sum;
@@ -48,3 +49,4 @@ Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update')
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

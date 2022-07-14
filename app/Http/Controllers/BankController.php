@@ -11,7 +11,13 @@ class BankController extends Controller
 
     public function index(Request $request)
     {
-        $accounts = Bank::all();
+        $accounts = match ($request->sort)
+        {
+            'asc'=> Bank::orderBy('name', 'asc')->get(),
+            'desc'=> Bank::orderBy('name', 'desc')->get(),
+            default => Bank::all()
+        };
+
         $msg = $request->session()->get('msg', '');
         return view('bank.index', ['accounts'=>$accounts, 'msg'=>$msg]);
     }
@@ -58,7 +64,7 @@ class BankController extends Controller
     public function destroy(Bank $bank)
     {
         if ($bank->amount != 0){
-            return redirect()->route('bank_index')->with('msg', 'still not NULL');
+            return redirect()->route('bank_index')->with('msg', 'hero not dead!');
         }
         $bank->delete();
         return redirect()->route('bank_index');

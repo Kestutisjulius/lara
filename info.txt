@@ -14,3 +14,5 @@ npm install
 npm run dev
 change [styles & scripts lines to vite] in "resources/views/layouts/app.blade.php" // @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 change app.js,
+php artisan make:middleware Role
+register to app/Http/Kernel.php
