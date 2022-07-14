@@ -7,3 +7,10 @@ php artisan migrate:status
 php artisan migrate:fresh --seed
 views are in ./resources/views ...with.blade.php
 php artisan migrate:rollback --path=database/migrations/2022_07_05_175806_create_colors_table.php
+----------//vite
+composer require laravel/ui
+php artisan ui vue --auth
+npm install
+npm run dev
+change [styles & scripts lines to vite] in "resources/views/layouts/app.blade.php" // @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+change app.js,

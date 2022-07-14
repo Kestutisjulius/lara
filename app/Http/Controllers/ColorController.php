@@ -60,7 +60,13 @@ class ColorController extends Controller
 
     public function destroy(Color $color) //POST - DELETE{param}
     {
+        if (!$color->animals->count()) //need many to one in Models color
+        {
         $color->delete();
         return redirect()->route('colors_index')->with('deleted', '!Color gone');
+        }
+        return redirect()->back()->with('deleted', 'nea');
+
+
     }
 }

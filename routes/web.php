@@ -44,3 +44,7 @@ Route::get('/animals/show/{id}', [Animal::class,'show'])->name('animal_show');
 Route::get('/animal/edit/{animal}', [Animal::class, 'edit'])->name('animal_edit');
 Route::delete('/animal/{animal}', [Animal::class, 'destroy'])->name('animal_kill');
 Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

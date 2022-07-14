@@ -1,4 +1,4 @@
-@extends('main_animals')
+@extends('layouts.app')
 @section('content')
     <div style="margin-left: 35px; display: inline">
     <a href="{{route('animals_index', ['sort'=>'asc'])}}">A-Z</a>

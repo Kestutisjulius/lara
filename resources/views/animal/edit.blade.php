@@ -1,4 +1,4 @@
-@extends('main_animals')
+@extends('layouts.app')
 @section('content')
     <h1>Animal EDIT</h1>
     <ul>
