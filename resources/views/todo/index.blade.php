@@ -21,22 +21,26 @@
                                             <h2>{{$todo->title}}</h2>
 
 
-                                            @if($todo->do == 0)
+                                            @if($todo->todo == 0)
                                                 <h4>{{$todo->text}}</h4>
                                             @else
-                                                <h4 style="text-decoration:line-through">{{$todo->text}}</h4>
+                                                <h4 style="text-decoration:line-through; background-color: mediumpurple">{{$todo->text}}</h4>
                                             @endif
 
 
                                         </div>
                                         <div class="controls">
-                                            <form method="post" action="">
-                                            <a type="submit" class="btn btn-outline-secondary m-2">TO DO</a>
-
+                                            <form method="post" action="{{route('todo_todo', $todo)}}">
+                                            <button type="submit" class="btn btn-outline-secondary m-2">TO DO</button>
+                                                @if($todo->todo == 0)
+                                                    <input type="hidden" name="todo" value="1">
+                                                @else
+                                                    <input type="hidden" name="todo" value="0">
+                                                @endif
                                                 @csrf
                                                 @method('put')
                                             </form>
-                                            <a class="btn btn-outline-primary m-2" href="">Show</a>
+                                            <a class="btn btn-outline-primary m-2" href="{{route('todo_show', $todo->id)}}">Show</a>
 
                                             <a class="btn btn-outline-success m-2" href="">Edit</a>
                                             <form class="delete" action="" method="post">
@@ -49,7 +53,7 @@
                                     </div>
                                 </li>
                             @empty
-                                <li class="list-group-item">No colors, no life.</li>
+                                <li class="list-group-item">No DO, ..coding.</li>
                             @endforelse
                         </ul>
                     </div>

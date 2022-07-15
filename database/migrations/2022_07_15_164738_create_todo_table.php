@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('to_dos', function (Blueprint $table) {
             $table->id();
             $table->string('title', 50);
-            $table->string('text', 100);
-            $table->boolean('do');
+            $table->string('text', 350);
+            $table->boolean('todo')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('to_dos');
+        Schema::dropIfExists('todo');
     }
 };

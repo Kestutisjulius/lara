@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $color = $faker->safeColorName;
             $colors->push($color);
             $colors = $colors->unique();
-        }while($colors->count() < 10);
+        }while($colors->count() < 20);
     foreach ($colors as $color) {
         DB::table('Colors')->insert(
             [
@@ -33,12 +33,9 @@ class DatabaseSeeder extends Seeder
             ]
         );
     }
-    DB::table('users')->insert([
-        'name' => 'Petras',
-        'email'=> 'petras@petras.lt',
-        'password'=>Hash::make('123'),
-        'role'=>1
-    ]);
+
+
+
 
 
     }
