@@ -80,3 +80,17 @@ h1.nice {
     letter-spacing: 12px;
     font-size: 40px;
 }
+.todo-bin{
+    .todo-box{
+        h2{
+            background-color: aquamarine;
+            padding: 6px;
+            border-radius: 6px;
+        }
+        h4{
+            border: 1px solid black;
+            border-radius: 6px;
+            padding: 6px;
+        }
+    }
+}

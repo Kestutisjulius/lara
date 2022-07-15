@@ -7,6 +7,7 @@ use App\Http\Controllers\Suma AS Sum;
 use App\Http\Controllers\ColorController AS Color;
 use App\Http\Controllers\BankController AS Bank;
 use App\Http\Controllers\WildAnimalController AS Animal;
+use App\Http\Controllers\ToDoController as Todo;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,7 +46,9 @@ Route::get('/animals/show/{id}', [Animal::class,'show'])->name('animal_show');
 Route::get('/animal/edit/{animal}', [Animal::class, 'edit'])->name('animal_edit');
 Route::delete('/animal/{animal}', [Animal::class, 'destroy'])->name('animal_kill');
 Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update');
-
+//To-Do
+Route::get('/todo', [Todo::class, 'index'])->name('todos_index');
+//Auth
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
