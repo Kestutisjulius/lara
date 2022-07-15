@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,5 +33,13 @@ class DatabaseSeeder extends Seeder
             ]
         );
     }
+    DB::table('users')->insert([
+        'name' => 'Petras',
+        'email'=> 'petras@petras.lt',
+        'password'=>Hash::make('123'),
+        'role'=>1
+    ]);
+
+
     }
 }
