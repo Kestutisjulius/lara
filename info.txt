@@ -8,7 +8,9 @@ php artisan migrate:fresh --seed
 views are in ./resources/views ...with.blade.php
 php artisan migrate:rollback --path=database/migrations/2022_07_05_175806_create_colors_table.php
 ----------//vite
+composer require --dev beyondcode/laravel-dump-server
 composer require laravel/ui
+composer install
 php artisan ui vue --auth
 npm install
 npm run dev

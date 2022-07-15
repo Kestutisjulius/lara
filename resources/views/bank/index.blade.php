@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
                         <h1>All accounts</h1>
@@ -27,7 +27,7 @@
                                         <th scope="col">personal CODE</th>
                                         <th scope="col">acc code</th>
                                         <th scope="col">amount</th>
-                                        <th scope="col">edit</th>
+                                        <th style="display: flex; justify-content: flex-end;" scope="col">edit | destroy | transfer</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +38,7 @@
                                             <td>{{$account->person_code}}</td>
                                             <td>{{$account->bank_code}}</td>
                                             <td>{{$account->amount}}</td>
-                                            <td><a class="btn-sm btn-primary" href="{{route('account_edit', $account)}}">edit</a>
+                                            <td style="display: flex; justify-content: flex-end;"><a class="btn-sm btn-primary" href="{{route('account_edit', $account)}}">edit</a>
 
                                                 <form class="destroyAccount" method="post" action="{{route('account_delete', $account)}}">
                                                     @csrf
