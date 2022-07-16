@@ -14,6 +14,6 @@ class ToDoSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

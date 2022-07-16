@@ -47,7 +47,7 @@ Route::get('/animal/edit/{animal}', [Animal::class, 'edit'])->name('animal_edit'
 Route::delete('/animal/{animal}', [Animal::class, 'destroy'])->name('animal_kill');
 Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update');
 //To-Do
-Route::get('/todo', [Todo::class, 'index'])->name('todos_index');
+Route::get('/todo', [Todo::class, 'index'])->name('todos_index')->middleware('role:admin');
 Route::get('/todo/create', [Todo::class, 'create'])->name('todo_create');
 Route::post('/todo', [Todo::class, 'store'])->name('todo_store');
 Route::put('/todo/{todo}', [Todo::class, 'todo'])->name('todo_todo');
