@@ -24,10 +24,24 @@ class Role
             {
                 abort(401);
             }
-        } else
+        }
         if ($role == 'user')
         {
             if ($userRole < 1)
+            {
+                abort(401);
+            }
+        }
+        if ($role == 'bankUser')
+        {
+            if ($userRole < 11 )
+            {
+                abort(401);
+            }
+        }
+        if ($role == 'bankAdmin')
+        {
+            if ($userRole < 12)
             {
                 abort(401);
             }

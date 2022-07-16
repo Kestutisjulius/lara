@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class BankController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(Request $request)
     {
         $accounts = match ($request->sort)

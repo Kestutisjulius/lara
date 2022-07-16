@@ -60,9 +60,11 @@
                                     <a class="dropdown-item" href="{{route('todos_index')}}">
                                         To_do List
                                     </a>
+                                    @if(Auth::user()->role >= 10)
                                     <a class="dropdown-item" href="{{route('todo_create')}}">
                                         New TODO
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -73,9 +75,11 @@
                                     <a class="dropdown-item" href="{{ route('bank_index') }}">
                                         Accounts List
                                     </a>
+                                    @if(Auth::user()->role >= 12)
                                     <a class="dropdown-item" href="{{ route('bank_create') }}">
                                         New Account
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -86,9 +90,11 @@
                                     <a class="dropdown-item" href="{{ route('colors_index') }}">
                                         Colors List
                                     </a>
+                                    @if(Auth::user()->role >= 10)
                                     <a class="dropdown-item" href="{{ route('colors_create') }}">
                                         New Color
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -99,9 +105,11 @@
                                     <a class="dropdown-item" href="{{ route('animals_index') }}">
                                         Animals List
                                     </a>
+                                    @if(Auth::user()->role >= 10)
                                     <a class="dropdown-item" href="{{ route('animals_create') }}">
                                         New Animal
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                         <!-- END -->

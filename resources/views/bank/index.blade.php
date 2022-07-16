@@ -39,14 +39,14 @@
                                             <td>{{$account->bank_code}}</td>
                                             <td>{{$account->amount}}</td>
                                             <td style="display: flex; justify-content: flex-end;"><a class="btn-sm btn-primary" href="{{route('account_edit', $account)}}">edit</a>
-
+                                                @if(Auth::user()->role >= 12)
                                                 <form class="destroyAccount" method="post" action="{{route('account_delete', $account)}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn-sm btn-danger btn" type="submit" >destroy</button>
 
                                                 </form>
-
+                                                @endif
                                                  <a class="btn-sm btn-success" href="{{route('bank_transfer', $account)}}">transfer</a></td>
                                     </tr>
                                     @empty
