@@ -52,6 +52,9 @@ Route::get('/todo/create', [Todo::class, 'create'])->name('todo_create');
 Route::post('/todo', [Todo::class, 'store'])->name('todo_store');
 Route::put('/todo/{todo}', [Todo::class, 'todo'])->name('todo_todo');
 Route::get('/todo/show/{id}', [Todo::class, 'show'])->name('todo_show');
+Route::get('/todo/edit/{todo}', [Todo::class, 'edit'])->name('todo_edit');
+Route::put('/todo/update/{todo}', [Todo::class, 'update'])->name('todo_update');
+Route::delete('/todo/{todo}', [Todo::class, 'destroy'])->name('todo_annihilate');
 //Auth
 Auth::routes();
 

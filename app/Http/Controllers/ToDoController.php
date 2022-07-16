@@ -41,14 +41,19 @@ class ToDoController extends Controller
         return view('todo.show', ['todo'=>$todo]);
     }
 
-    public function edit(ToDo $toDo)
+    public function edit(ToDo $todo)
     {
-        //
+        return view('todo.edit', ['todo'=>$todo]);
     }
 
-    public function update(Request $request, ToDo $toDo)
+    public function update(Request $request, ToDo $todo)
     {
-        //
+        $todo->title = $request->todo_title;
+        $todo->text = $request->todo_text;
+        $request->check_box ? ($todo->todo = 1) : ($todo->todo = 0) ;
+        $todo->save();
+        return redirect()->route('todos_index')->with('success', 'Update complete!');
+
     }
     public function todo(Request $request, ToDo $todo)
     {
@@ -59,8 +64,13 @@ class ToDoController extends Controller
     }
 
 
-    public function destroy(ToDo $toDo)
+    public function destroy(ToDo $todo)
     {
-        //
+        if ($todo->todo == 1)
+        {
+        $todo->delete();
+        return redirect()->route('todos_index')->with('deleted', 'forgetted TODO !');
+        }
+        return redirect()->back()->with('deleted', 'do something first !');
     }
 }

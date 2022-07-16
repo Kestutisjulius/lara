@@ -42,8 +42,8 @@
                                             </form>
                                             <a class="btn btn-outline-primary m-2" href="{{route('todo_show', $todo->id)}}">Show</a>
 
-                                            <a class="btn btn-outline-success m-2" href="">Edit</a>
-                                            <form class="delete" action="" method="post">
+                                            <a class="btn btn-outline-success m-2" href="{{route('todo_edit', $todo)}}">Edit</a>
+                                            <form class="delete" action="{{route('todo_annihilate', $todo)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-outline-danger m-2">Out from this Life</button>
