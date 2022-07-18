@@ -94,3 +94,27 @@ h1.nice {
         }
     }
 }
+.user-bin{
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 8px 5px 5px;
+    .user-box{
+        display: flex;
+        h2{
+            width: 50%;
+            background-color: #a0aec0;
+            font-size: 16px;
+            padding: 6px;
+            border-radius: 6px;
+        }
+        h4{
+            border: 1px solid black;
+            background-color: crimson;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #fff;
+            border-radius: 6px;
+            padding: 6px;
+        }
+    }
+}

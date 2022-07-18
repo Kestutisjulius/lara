@@ -8,6 +8,7 @@ use App\Http\Controllers\ColorController AS Color;
 use App\Http\Controllers\BankController AS Bank;
 use App\Http\Controllers\WildAnimalController AS Animal;
 use App\Http\Controllers\ToDoController as Todo;
+use App\Http\Controllers\UserController as U;
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,6 +56,13 @@ Route::get('/todo/show/{id}', [Todo::class, 'show'])->name('todo_show')->middlew
 Route::get('/todo/edit/{todo}', [Todo::class, 'edit'])->name('todo_edit')->middleware('role:admin');
 Route::put('/todo/update/{todo}', [Todo::class, 'update'])->name('todo_update')->middleware('role:admin');
 Route::delete('/todo/{todo}', [Todo::class, 'destroy'])->name('todo_annihilate')->middleware('role:admin');
+//USER
+Route::get('/user/create', [U::class, 'create'])->name('user_create')->middleware('role:admin');
+Route::post('/user', [U::class, 'store'])->name('user_store')->middleware('role:admin');
+Route::get('/users', [U::class, 'index'])->name('users_index')->middleware('role:admin');
+Route::get('/user/edit/{user}', [U::class, 'edit'])->name('user_edit')->middleware('role:admin');
+Route::put('/user/update/{user}', [U::class, 'update'])->name('user_update')->middleware('role:admin');
+Route::delete('/user/{user}', [U::class, 'destroy'])->name('user_delete')->middleware('role:admin');
 //Auth
 Auth::routes();
 

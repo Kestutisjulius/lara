@@ -119,6 +119,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->role >= 10)
+                                        <a class="dropdown-item" href="{{ route('user_create') }}">
+                                            create USER
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('users_index')}}">
+                                            manage USERS
+                                        </a>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
