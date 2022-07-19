@@ -9,10 +9,13 @@ use App\Http\Controllers\BankController AS Bank;
 use App\Http\Controllers\WildAnimalController AS Animal;
 use App\Http\Controllers\ToDoController as Todo;
 use App\Http\Controllers\UserController as U;
+use App\Http\Controllers\FrontController as Front;
 
 Route::get('/', function () {
     return view('welcome');
 });
+//FRONT
+Route::get('/front', [Front::class, 'index'] )->name('front_index');
 
 Route::get('/bebras', fn()=>'bebrams Valio');
 Route::get('/barsukas', [AC::class, 'barsukas']);

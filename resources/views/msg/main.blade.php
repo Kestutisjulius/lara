@@ -8,3 +8,8 @@
         {{ session('deleted') }}
     </div>
 @endif
+@if(session('info'))
+    <div class="alert alert-secondary">
+        {{ session('info') }}
+    </div>
+@endif
