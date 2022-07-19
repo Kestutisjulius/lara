@@ -20,7 +20,7 @@
                             <ul class="list-group list-group-horizontal-sm">
                                 <li class="list-group-item"><input name="a_code" type="text" value="{{$bank->bank_code}}"></li>
                                 <li class="list-group-item"><input name="amount" type="text" value="{{$bank->amount}}"></li>
-                                <a style="width: 100%" class="btn btn-primary" type="submit" >save</a>
+                                <button style="width: 100%" class="btn btn-primary" type="submit" >save</button>
                             </ul>
                         </form>
                     </div>

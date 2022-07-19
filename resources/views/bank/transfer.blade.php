@@ -8,7 +8,7 @@
                         <h1>transfer money</h1>
                     </div>
                     <div class="card-body">
-                        <form class="bankCreate mb-3" method="post" action="{{route('transfer_do', $bank)}}">
+                        <form class="bankCreate mb-3" method="post" action="{{route('bank_do', $bank)}}">
                             @csrf
                             @method('put')
                             <ul class="list-group list-group-horizontal-sm">

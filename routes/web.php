@@ -11,37 +11,39 @@ use App\Http\Controllers\ToDoController as Todo;
 use App\Http\Controllers\UserController as U;
 use App\Http\Controllers\FrontController as Front;
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 //FRONT
-Route::get('/front', [Front::class, 'index'] )->name('front_index');
-
+Route::get('/', [Front::class, 'index'] )->name('front_index');
+//ANY
 Route::get('/bebras', fn()=>'bebrams Valio');
 Route::get('/barsukas', [AC::class, 'barsukas']);
 Route::get('/briedis/{id}', [AC::class, 'briedis']);
 Route::get('/suma/{s1}/{s2?}', [Sum::class, 'suma']);
-
 Route::get('/skirtumas', [Sum::class, 'skirtumas'])->name('forma');
 Route::post('/skirtumas', [Sum::class, 'skaiciuoti'])->name('skaiciuokle');
 //COLOR:
-Route::get('/colors', [Color::class, 'index'])->name('colors_index')->middleware('role:user');
-Route::get('/colors/show/{id}', [Color::class, 'show'])->name('colors_show')->middleware('role:user');
-Route::get('/colors/create', [Color::class, 'create'])->name('colors_create')->middleware('role:admin');
-Route::post('/colors', [Color::class, 'store'])->name('colors_store')->middleware('role:admin');
-Route::get('/colors/edit/{color}', [Color::class, 'edit'])->name('colors_edit')->middleware('role:admin');
-Route::put('/colors/{color}', [Color::class, 'update'])->name('colors_update')->middleware('role:admin');
-Route::delete('/colors/{color}', [Color::class, 'destroy'])->name('colors_delete')->middleware('role:admin');
-
+Route::prefix('colors')->name('colors_')->group(function (){
+    Route::get('', [Color::class, 'index'])->name('index')->middleware('role:user');
+    Route::get('show/{id}', [Color::class, 'show'])->name('show')->middleware('role:user');
+    Route::get('create', [Color::class, 'create'])->name('create')->middleware('role:admin');
+    Route::post('', [Color::class, 'store'])->name('store')->middleware('role:admin');
+    Route::get('edit/{color}', [Color::class, 'edit'])->name('edit')->middleware('role:admin');
+    Route::put('{color}', [Color::class, 'update'])->name('update')->middleware('role:admin');
+    Route::delete('{color}', [Color::class, 'destroy'])->name('delete')->middleware('role:admin');
+});
 //BANK:
-Route::get('/bank', [Bank::class, 'index'])->name('bank_index')->middleware('role:bankUser');
-Route::get('/bank/create', [Bank::class, 'create'])->name('bank_create')->middleware('role:bankAdmin');
-Route::post('/bank', [Bank::class, 'store'])->name('bank_store')->middleware('role:bankAdmin');
-Route::get('/bank/edit/{bank}', [Bank::class, 'edit'])->name('account_edit')->middleware('role:bankAdmin');
-Route::put('/bank/{bank}', [Bank::class, 'update'])->name('bank_update')->middleware('role:bankAdmin');
-Route::delete('/bank/{bank}', [Bank::class, 'destroy'])->name('account_delete')->middleware('role:bankAdmin');
-Route::get('/bank/transfer/{bank}', [Bank::class, 'transfer'])->name('bank_transfer')->middleware('role:bankAdmin');
-Route::put('/bank/transfer/{bank}', [Bank::class, 'transferDo'])->name('transfer_do')->middleware('role:bankAdmin');
+Route::prefix('bank')->name('bank_')->group(function (){
+    Route::get('', [Bank::class, 'index'])->name('index')->middleware('role:bankUser');
+    Route::get('create', [Bank::class, 'create'])->name('create')->middleware('role:bankAdmin');
+    Route::post('', [Bank::class, 'store'])->name('store')->middleware('role:bankAdmin');
+    Route::get('edit/{bank}', [Bank::class, 'edit'])->name('edit')->middleware('role:bankAdmin');
+    Route::put('{bank}', [Bank::class, 'update'])->name('update')->middleware('role:bankAdmin');
+    Route::delete('{bank}', [Bank::class, 'destroy'])->name('delete')->middleware('role:bankAdmin');
+    Route::get('transfer/{bank}', [Bank::class, 'transfer'])->name('transfer')->middleware('role:bankAdmin');
+    Route::put('transfer/{bank}', [Bank::class, 'transferDo'])->name('do')->middleware('role:bankAdmin');
+});
 //Animal
 Route::get('/animals', [Animal::class, 'index'])->name('animals_index')->middleware('role:user');
 Route::get('/animals/create', [Animal::class, 'create'])->name('animals_create')->middleware('role:admin');
