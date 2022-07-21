@@ -17,8 +17,8 @@
                             @forelse($animals as $animal)
                                 <li class="list-group-item">
                                     <div class="front-bin">
-                                        <div class="front-box" style="background:{{$animal->color->color}};">
-                                            <h6>{{$animal->color->title}}</h6>
+                                        <div class="front-box" style="background:{{$animal->color}};">
+                                            <h6>{{$animal->title}}</h6>
                                             <h2>{{$animal->name}}</h2>
                                         </div>
                                         <div class="controls">

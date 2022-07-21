@@ -10,7 +10,7 @@ class WildAnimal extends Model
 {
     use HasFactory;
 
-    public function color()
+    public function ecolor()
     {
         return $this->belongsTo(Color::class, 'color_id', 'id');
     }
