@@ -11,11 +11,11 @@ use App\Http\Controllers\ToDoController as Todo;
 use App\Http\Controllers\UserController as U;
 use App\Http\Controllers\FrontController as Front;
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 //FRONT
-Route::get('/welcome', [Front::class, 'index'] )->name('front_index');
+Route::get('/', [Front::class, 'index'] )->name('front_index');
 //ANY
 Route::get('/bebras', fn()=>'bebrams Valio');
 Route::get('/barsukas', [AC::class, 'barsukas']);
