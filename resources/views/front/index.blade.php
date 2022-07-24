@@ -2,15 +2,15 @@
 @section('content')
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
                 @include('front.box')
             <div class="col-md-8">
-                <div class="card">
+                <div class="card ">
                     <div class="card-header">
                         <h6>animals</h6>
                     </div>
                     @include('front.page')
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <ul class="list-group">
                             @forelse($animals as $animal)
                                 <li class="list-group-item">

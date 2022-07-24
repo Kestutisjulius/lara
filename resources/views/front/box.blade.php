@@ -1,4 +1,4 @@
-<div class="row justify-content-center mb-4">
+<div class="row justify-content-center mb-0">
     <div class="col-md-9">
         <div class="card-header">sort, filter & search box</div>
         <div class="card-body">
