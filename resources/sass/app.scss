@@ -105,7 +105,7 @@ h1.nice {
             border-radius: 6px;
         }
         h6{
-            margin: 6px;
+            margin: 8px;
             background-color:  rgb(255,255,255, 0.5);
             height: 30px;
             padding: 6px;
@@ -139,4 +139,10 @@ h1.nice {
             padding: 6px;
         }
     }
+}
+.count_size{
+    height: 1rem;
+    width: 10rem;
+    margin-top: 8px;
+    background-color: rgb(240, 240, 240, 0.7);
 }
