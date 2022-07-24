@@ -27,6 +27,11 @@ class FrontController extends Controller
                         ->where('colors.title', 'like', '%'.$w2.'%')
                         ->where('wild_animals.name', 'like', '%'.$w1.'%');
                 })
+                ->orWhere(function ($query) use ($w1, $w2){
+                    $query
+                        ->where('wild_animals.name', 'like', '%'.$w2.'%')
+                        ->where('wild_animals.name', 'like', '%'.$w1.'%');
+                })
 
                 ->orderBy('wild_animals.name', 'asc')
                 ->get(), 'default'];

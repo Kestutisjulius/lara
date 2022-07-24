@@ -8,10 +8,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h6>animals</h6>
-                        <div>
-
-                        </div>
                     </div>
+                    @include('front.page')
                     <div class="card-body">
                         <ul class="list-group">
                             @forelse($animals as $animal)
@@ -34,6 +32,7 @@
                         </ul>
                     </div>
                 </div>
+                @include('front.page')
             </div>
         </div>
     </div>
