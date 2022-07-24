@@ -13,11 +13,22 @@ class FrontController extends Controller
 
         if ($request->s)
         {
+
+        list($w1, $w2) = explode(' ', $request->s.' ');
+
+
             $animalsDir = [DB::table('wild_animals')
                 ->join('colors', 'colors.id', '=', 'wild_animals.color_id')
                 ->select('colors.*', 'wild_animals.*')
+                ->where('colors.title', 'like', '%'.$w1.'%')
+                ->where('wild_animals.name', 'like', '%'.$w2.'%')
+                ->orWhere(function ($query) use ($w1, $w2){
+                    $query
+                        ->where('colors.title', 'like', '%'.$w2.'%')
+                        ->where('wild_animals.name', 'like', '%'.$w1.'%');
+                })
+
                 ->orderBy('wild_animals.name', 'asc')
-                ->where('wild_animals.name', 'like', '%'.$request->s.'%')
                 ->get(), 'default'];
             $filter = 0;
 
