@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ColorController extends Controller
 {
@@ -30,9 +32,24 @@ class ColorController extends Controller
 
     public function store(Request $request) //CREATE-POST {BODY}
     {
+        $validator = Validator::make($request->all(),
+            [
+                'color_title' => ['required', 'min:3', 'max:88']
+            ],
+            [
+                'required' => 'a pavadinimas kur ?!',
+                'min' => 'biski daugiau nei du simboliai turi but ;)',
+                'max' => 'biski maziau nei 19 simboliai turi but ;)',
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $color = new Color;
         $color->color = $request->create_color_input;
-        $color->title = $request->color_title ?? 'no title';
+        $color->title = $request->color_title;
         $color->save();
         return redirect()->route('colors_index')->with('success', 'WINNER! creates nice color');
     }
@@ -50,6 +67,22 @@ class ColorController extends Controller
 
     public function update(Request $request, Color $color) //PUT - UPDATE {body/param}
     {
+
+        $validator = Validator::make($request->all(),
+            [
+                'color_title' => ['required', 'min:3', 'max:88']
+            ],
+            [
+                'required' => 'a pavadinimas kur ?!',
+                'min' => 'biski daugiau nei du simboliai turi but ;)',
+                'max' => 'biski maziau nei 19 simboliai turi but ;)',
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $color->color = $request->create_color_input;
         $color->title = $request->color_title ?? 'no title';
         $color->save();

@@ -11,7 +11,7 @@
                         <form action="{{route('colors_store')}}" method="post">
                             <div class="form-group">
                                 <label>Color name</label>
-                                <input class="form-control" type="text" name="color_title" />
+                                <input class="form-control" type="text" name="color_title" value="{{old('color_title')}}"/>
                             </div>
                             <div class="form-group">
                                 <label class="mt-2">Color</label>
