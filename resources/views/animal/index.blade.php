@@ -17,11 +17,11 @@
                         <ul class="list-group">
                             @forelse($animals as $animal)
                                 <li class="list-group-item">
-                                    <div class="color-bin">
-                                        <div class="color-box" style="background:{{$animal->ecolor->color}};">
+                                    <div class="color-bin ">
+                                        <div class="color-box " style="background:{{$animal->ecolor->color}};">
                                             <h2>{{$animal->name}}</h2>
                                         </div>
-                                        <div class="controls">
+                                        <div class="form-control-sm">
                                             <a class="btn btn-outline-primary m-2" href="{{route('animal_show', $animal->id)}}">Show</a>
 
                                             <a class="btn btn-outline-success m-2" href="{{route('animal_edit', $animal)}}">Edit</a>
@@ -32,6 +32,9 @@
                                             </form>
 
                                         </div>
+                                            <div class="figure-img">
+                                                <img src="{{$animal->photo}}">
+                                            </div>
                                     </div>
                                 </li>
                             @empty

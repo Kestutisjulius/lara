@@ -23,7 +23,7 @@
                             </select>
                             @csrf
                             @method('post')
-                            <button class="btn btn-outline-success mt-4" type="submit">save this ANIMAL</button>
+                            <button class="btn btn-outline-success mt-2" type="submit">save this ANIMAL</button>
                         </form>
                     </div>
                 </div>
