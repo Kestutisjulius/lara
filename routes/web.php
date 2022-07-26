@@ -56,6 +56,7 @@ Route::get('/animals/show/{id}', [Animal::class,'show'])->name('animal_show')->m
 Route::get('/animal/edit/{animal}', [Animal::class, 'edit'])->name('animal_edit')->middleware('role:admin');
 Route::delete('/animal/{animal}', [Animal::class, 'destroy'])->name('animal_kill')->middleware('role:admin');
 Route::put('/animal/{animal}', [Animal::class, 'update'])->name('animal_update')->middleware('role:admin');
+Route::put('/animal/picture/delete/{animal}', [Animal::class, 'deletePicture'])->name('delete_img')->middleware('role:admin');
 //To-Do
 Route::get('/todo', [Todo::class, 'index'])->name('todos_index')->middleware('role:user');
 Route::get('/todo/create', [Todo::class, 'create'])->name('todo_create')->middleware('role:admin');

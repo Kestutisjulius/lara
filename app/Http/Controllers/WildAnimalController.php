@@ -71,6 +71,28 @@ class WildAnimalController extends Controller
 
     public function update(Request $request, Animal $animal)
     {
+        if ($request->file('animal_photo'))
+        {
+            //-----------------------------DELETE OLD-PHOTO file
+            $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+            $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+            $file = asset('/images'.'/'.$name.'.'.$extension);
+            if (file_exists($file))
+            {
+                unlink($file);
+            }
+            //------------------------------
+
+            $photo = $request->file('animal_photo');
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $file = $name.'-'.time().'.'.$ext;
+        }
+        $photo->move(public_path().'/images', $file); //path TO directory
+
+        $animal->photo = asset('/images'.'/'.$file); //url ON DB
+
 
         $animal->name = $request->animal_name;
 
@@ -80,9 +102,37 @@ class WildAnimalController extends Controller
 
         return redirect()->route('animals_index')->with('success', 'updated beast!');
     }
+    public function deletePicture(Animal $animal)
+    {
+        $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+        $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+
+        $file = asset('/images'.'/'.$name.'.'.$extension);
+
+        if (file_exists($file))
+        {
+            unlink($file);
+        }
+
+        $animal->photo = null;
+        $animal->save();
+
+        return redirect()->back()->with('deleted', 'photo out successfully!');
+    }
 
     public function destroy(Animal $animal)
     {
+        //-----------------------------DELETE OLD-PHOTO file
+
+        if ($animal->photo) {
+            $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+            $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+            $file = asset('/images' . '/' . $name . '.' . $extension);
+            if (file_exists($file)) {
+                unlink($file);
+            }
+            //------------------------------
+        }
         $animal->delete();
 
         return redirect()->route('animals_index')->with('deleted', 'Animal is dead :(');
