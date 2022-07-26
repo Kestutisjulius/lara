@@ -7,6 +7,7 @@ use App\Models\WildAnimal as Animal;
 use App\Http\Requests\UpdateWildAnimalRequest;
 use Illuminate\Http\Request;
 
+
 class WildAnimalController extends Controller
 {
     public function index(Request $request)
@@ -29,6 +30,18 @@ class WildAnimalController extends Controller
     public function store(Request $request)
     {
         $animal = new Animal;
+        //ANIMAL PHOTO
+        if ($request->file('animal_photo'))
+        {
+            $photo = $request->file('animal_photo');
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $file = $name.'-'.time().'.'.$ext;
+        }
+        $photo->move(public_path().'/images', $file); //path TO directory
+
+        $animal->photo = asset('/images'.'/'.$file); //url ON DB
 
         $animal->name = $request->animal_name;
 
