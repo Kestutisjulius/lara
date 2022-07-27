@@ -21,9 +21,11 @@
                                         <form class="controls" action="{{route('front_add')}}" method="post">
                                             @csrf
                                             @method('post')
+                                            @if(Auth::user()?->role > 0)
                                             <input class="form-control-sm count_size" type="number" name="animal_count">
                                             <button class="btn btn-primary m-2 btn-sm">put to bag</button>
                                             <input type="hidden" value="{{$animal->id}}" name="animal_id">
+                                            @endif
 
                                         </form>
                                         </div>

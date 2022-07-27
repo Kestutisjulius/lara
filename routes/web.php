@@ -10,15 +10,17 @@ use App\Http\Controllers\WildAnimalController AS Animal;
 use App\Http\Controllers\ToDoController as Todo;
 use App\Http\Controllers\UserController as U;
 use App\Http\Controllers\FrontController as Front;
-use App\Http\Controllers\CartController AS Cart;
+use App\Http\Controllers\OrderController AS Order;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 //FRONT
 Route::get('/', [Front::class, 'index'] )->name('front_index');
-//CART
-Route::post('/add_animal_to_cart', [Cart::class, 'add'])->name('front_add');
+//ORDER
+Route::post('/add_animal_to_order', [Order::class, 'add'])->name('front_add');
+Route::get('/my_orders', [Order::class, 'showMyOrders'])->name('my_orders');
+
 
 //ANY
 Route::get('/bebras', fn()=>'bebrams Valio');

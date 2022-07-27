@@ -129,6 +129,17 @@
                                             manage USERS
                                         </a>
                                     @endif
+                                        <a class="dropdown-item" href="{{route('my_orders')}}">
+                                            My orders
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('my_orders')}}">
+                                            <form class="delete" action="{{route('user_delete', Auth::user())}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-danger">Destroy self</button>
+                                            </form>
+                                        </a>
+
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
