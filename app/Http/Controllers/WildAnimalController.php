@@ -38,6 +38,7 @@ class WildAnimalController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
 
             $file = $name.'-'.time().'.'.$ext;
+            //$image = Image::make($photo);
         }
         $photo->move(public_path().'/images', $file); //path TO directory
 
@@ -76,7 +77,7 @@ class WildAnimalController extends Controller
             //-----------------------------DELETE OLD-PHOTO file
             $name = pathinfo($animal->photo, PATHINFO_FILENAME);
             $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
-            $file = asset('/images'.'/'.$name.'.'.$extension);
+            $file = public_path().'/images'.'/'.$name.'.'.$extension;
             if (file_exists($file))
             {
                 unlink($file);
@@ -107,7 +108,7 @@ class WildAnimalController extends Controller
         $name = pathinfo($animal->photo, PATHINFO_FILENAME);
         $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
 
-        $file = asset('/images'.'/'.$name.'.'.$extension);
+        $file = public_path().'/images'.'/'.$name.'.'.$extension;
 
         if (file_exists($file))
         {
@@ -127,7 +128,8 @@ class WildAnimalController extends Controller
         if ($animal->photo) {
             $name = pathinfo($animal->photo, PATHINFO_FILENAME);
             $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
-            $file = asset('/images' . '/' . $name . '.' . $extension);
+            $file = public_path().'/images'.'/'.$name.'.'.$extension;
+
             if (file_exists($file)) {
                 unlink($file);
             }
