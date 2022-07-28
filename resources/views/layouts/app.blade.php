@@ -128,18 +128,20 @@
                                         <a class="dropdown-item" href="{{route('users_index')}}">
                                             manage USERS
                                         </a>
+
+                                        <a class="dropdown-item" href="{{route('all_orders')}}">
+                                            <button class="btn btn-sm btn-secondary">All orders</button>
+
+                                        </a>
                                     @endif
-                                        <a class="dropdown-item" href="{{route('my_orders')}}">
+                                        <a class="dropdown-item mb-4" href="{{route('my_orders')}}">
                                             My orders
                                         </a>
-                                        <a class="dropdown-item" href="{{route('my_orders')}}">
-                                            <form class="delete" action="{{route('user_delete', Auth::user())}}" method="post">
+                                            <form class="dropdown-item delete" action="{{route('user_delete', Auth::user())}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-danger">Destroy self</button>
                                             </form>
-                                        </a>
-
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

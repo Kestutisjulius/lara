@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function index(Request $request)
+    {
+        $orders = Order::orderBy('id', 'desc')->get();
+        return view('order.index', ['orders'=>$orders]);
+    }
 
     public function add(Request $request)
     {
@@ -22,7 +27,7 @@ class OrderController extends Controller
 
     public function showMyOrders()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->get();
+        $orders = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
 
         return view('front.orders', ['orders'=>$orders]);

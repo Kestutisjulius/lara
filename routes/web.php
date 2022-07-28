@@ -75,6 +75,9 @@ Route::get('/users', [U::class, 'index'])->name('users_index')->middleware('role
 Route::get('/user/edit/{user}', [U::class, 'edit'])->name('user_edit')->middleware('role:admin');
 Route::put('/user/update/{user}', [U::class, 'update'])->name('user_update')->middleware('role:admin');
 Route::delete('/user/{user}', [U::class, 'destroy'])->name('user_delete')->middleware('role:admin');
+//ORDERS
+Route::get('/order', [Order::class, 'index'])->name('all_orders')->middleware('role:admin');
+
 //Auth
 Auth::routes();
 
