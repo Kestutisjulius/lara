@@ -17,24 +17,34 @@
                         <ul class="list-group">
                             @forelse($animals as $animal)
                                 <li class="list-group-item">
-                                    <div class="color-bin ">
-                                        <div class="color-box " style="background:{{$animal->ecolor->color}};">
-                                            <h2>{{$animal->name}}</h2>
-                                        </div>
-                                        <div class="form-control-sm">
-                                            <a class="btn btn-outline-primary m-2" href="{{route('animal_show', $animal->id)}}">Show</a>
+                                            <div class="animal-box" style="background:{{$animal->ecolor->color}};">
+                                                <h2>{{$animal->name}}</h2>
+                                            </div>
 
-                                            <a class="btn btn-outline-success m-2" href="{{route('animal_edit', $animal)}}">Edit</a>
-                                            <form class="delete" action="{{route('animal_kill', $animal)}}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger m-2">Kill</button>
-                                            </form>
 
-                                        </div>
+
+
+                                    <div class="animal-bin ">
+                                        <div class="lr">
+
                                             <div class="figure-img">
                                                 <img src="{{$animal->photo}}">
                                             </div>
+
+                                        </div>
+                                            <div class="form-control-sm trijule ">
+                                                <a class="btn btn-outline-primary m-2 i-btn" href="{{route('animal_show', $animal->id)}}">Show</a>
+
+                                                <a class="btn btn-outline-success m-2 i-btn" href="{{route('animal_edit', $animal)}}">Edit</a>
+                                                <form class="delete" action="{{route('animal_kill', $animal)}}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-outline-danger m-2 i-btn">Kill</button>
+                                                </form>
+                                            </div>
+
+
+
                                     </div>
                                 </li>
                             @empty

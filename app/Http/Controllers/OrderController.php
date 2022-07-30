@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -28,8 +29,13 @@ class OrderController extends Controller
     public function showMyOrders()
     {
         $orders = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $orders = $orders->map(function ($order){
+            $time = Carbon::create($order->created_at)->timezone('Europe/Vilnius');
+        $order->time = $time->format('Y-M-d (H:i:s)');
+        return $order;
+        });
 
-
+//        dd($orders);
         return view('front.orders', ['orders'=>$orders]);
     }
 

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email', 100);
-            $table->string('person_code', 50);
-            $table->string('bank_code', 50);
-            $table->decimal('amount', 8,2);
+            $table->string('iban', 50);
+            $table->string('credit_num', 50);
+            $table->decimal('amount', 8,2)->nullable();
             $table->timestamps();
         });
     }

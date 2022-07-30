@@ -17,7 +17,7 @@
                                     <div class="front-bin">
                                         <div class="front-box justify-content-between" style="background:{{$order->animal->ecolor->color}};">
                                             <h6>{{$order->animal->ecolor->title}}</h6>
-                                            <h6><strong>{{$order->user->name}}</strong> have: {{$order->count}} units</h6>
+                                            <h6>{{$order->time}} | <strong>{{$order->user->name}}</strong> have: {{$order->count}} units</h6>
 
                                             <h2>{{$order->animal->name}}</h2>
 

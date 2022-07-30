@@ -101,4 +101,7 @@ class ColorController extends Controller
 
 
     }
+    public function link(){
+        abort(403);
+    }
 }

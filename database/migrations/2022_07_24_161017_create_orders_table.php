@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('animal_id');
             $table->foreign('animal_id')->references('id')->on('wild_animals');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedTinyInteger('count');
             $table->timestamps();
         });

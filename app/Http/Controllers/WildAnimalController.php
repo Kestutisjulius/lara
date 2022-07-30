@@ -16,7 +16,7 @@ class WildAnimalController extends Controller
         {
             'asc' => Animal::orderBy('name', 'asc')->get(),
             'desc' => Animal::orderBy('name', 'desc')->get(),
-            default => Animal::all()
+            default => Animal::orderBy('id', 'desc')->get()
         };
         return view('animal.index', ['animals'=> $animals]);
     }

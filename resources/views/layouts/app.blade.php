@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <!-- Styles //vite-->
     <!-- Scripts //vite-->
+    <script>
+        const showUrl = "{{route('colors_show_route')}}";
+    </script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>

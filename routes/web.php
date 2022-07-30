@@ -38,6 +38,9 @@ Route::prefix('colors')->name('colors_')->group(function (){
     Route::get('edit/{color}', [Color::class, 'edit'])->name('edit')->middleware('role:admin');
     Route::put('{color}', [Color::class, 'update'])->name('update')->middleware('role:admin');
     Route::delete('{color}', [Color::class, 'destroy'])->name('delete')->middleware('role:admin');
+    //SEE show link without ID
+    Route::get('show', [Color::class, 'link'])->name('show_route');
+
 });
 //BANK:
 Route::prefix('bank')->name('bank_')->group(function (){
