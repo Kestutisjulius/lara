@@ -4,7 +4,6 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
     if (document.querySelector('.magic--see')) {
 
-
         const selector = document.querySelector('[name=color_id]');
         const magicSee = document.querySelector('.magic--see');
         const linkSpanText = magicSee.querySelector('span');
