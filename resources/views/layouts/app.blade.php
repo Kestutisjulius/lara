@@ -13,10 +13,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!-- Styles //vite-->
     <!-- Scripts //vite-->
     <script>
         const showUrl = "{{route('colors_show_route')}}";
+        const addToCartUrl = "{{route('front_add_cart')}}";
+        const smallCart = "{{route('small_cart')}}";
     </script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -157,6 +160,7 @@
                                     </form>
                                 </div>
                             </li>
+                            <div class="cart"><span class="material-symbols-outlined">shopping_cart</span><div class="cart_count small--cart">--</div>CART</div>
                         @endguest
                     </ul>
                 </div>

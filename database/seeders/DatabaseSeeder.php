@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->firstName.' '.$faker->lastName,
                 'email' => $faker->email,
                 'password' => Hash::make('123'),
-                'role' => 2,
+                'role' => 1,
                 'visitor_ip'=> $faker->ipv6
             ]);
         }
