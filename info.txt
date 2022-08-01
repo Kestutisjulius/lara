@@ -21,3 +21,5 @@ change app.js,
 php artisan make:middleware Role
 register to app/Http/Kernel.php //
 composer require intervention/image //for change images like photoEditor
+//PDF
+composer require barryvdh/laravel-dompdf

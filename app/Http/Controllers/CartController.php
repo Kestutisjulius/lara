@@ -16,13 +16,15 @@ class CartController extends Controller
         $cart[]=['id'=> $id, 'count'=> $count];
         session()->put('cart', $cart);
         return response()->json([
-            'msg'=>'Tu nuostabi arba pastabus'
+            'msg'=>'ok'
         ]);
     }
     public function show(){
 
         $cart = session()->get('cart', []);
         $id= array_map(fn($product)=>$product['id'], $cart);
+        $cartCollection = collect([...$cart]);
+
         $animals= Animal::whereIn('id', $id)->get()->map(function($animal){
             $animal->count = 2;
             return $animal;
