@@ -160,7 +160,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <div class="cart"><span class="material-symbols-outlined">shopping_cart</span><div class="cart_count small--cart">--</div>CART</div>
+                            <div class="cart"><span class="material-symbols-outlined">shopping_cart</span><div class="cart_count small--cart">--</div></div>
                         @endguest
                     </ul>
                 </div>

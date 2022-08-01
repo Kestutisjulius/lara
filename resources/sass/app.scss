@@ -211,7 +211,7 @@ h1.nice {
         position: absolute;
         top: 0px;
         left: 14px;
-
+        right: -70px;
         height: 20px;
         border: 1px solid #f00;
         border-radius: 5px;
@@ -222,10 +222,13 @@ h1.nice {
         line-height: 16px;
         padding: 1px 10px;
         text-shadow: 1px 1px 2px  #f00, 1px 1px 2px  #000;
-
         vertical-align: middle;
         color: #fff;
-
         text-align: center;
+        .clear--cart{
+            font-size: 12px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
     }
 }
