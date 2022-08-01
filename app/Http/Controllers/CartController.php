@@ -13,7 +13,20 @@ class CartController extends Controller
         $id = (int) $request->animalId;
 
         $cart = session()->get('cart', []);
-        $cart[]=['id'=> $id, 'count'=> $count];
+
+        switch (1){
+            case 1:
+                foreach ($cart as &$item){
+                if ($item['id'] == $id){
+                    $item['count'] += $count;
+                    break 2;
+                }
+            }
+            default : $cart[]=['id'=> $id, 'count'=> $count];
+        }
+
+
+
         session()->put('cart', $cart);
         return response()->json([
             'msg'=>'ok'
@@ -25,8 +38,8 @@ class CartController extends Controller
         $id= array_map(fn($product)=>$product['id'], $cart);
         $cartCollection = collect([...$cart]);
 
-        $animals= Animal::whereIn('id', $id)->get()->map(function($animal){
-            $animal->count = 2;
+        $animals= Animal::whereIn('id', $id)->get()->map(function($animal) use ($cartCollection){
+            $animal->count = $cartCollection->first(fn($elementas)=>$elementas['id'] == $animal->id)['count'];
             return $animal;
         });
 

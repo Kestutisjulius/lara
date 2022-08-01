@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
                 const row = button.closest('.controls');
                 const animalId = row.querySelector('[name=animal_id]').value;
                 const animalCount = row.querySelector('[name=animal_count]').value;
-                axios.post(addToCartUrl, {animalCount, animalId}).then(response =>{
+                axios.post(addToCartUrl, {animalId, animalCount}).then(response =>{
                     axios.get(smallCart).then(res =>{
                         document.querySelector('.small--cart').innerHTML=res.data.html;
                        })
