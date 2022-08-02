@@ -31,8 +31,8 @@ class BankController extends Controller
         $account = new Bank;
         $account->name = $request->name;
         $account->email = $request->email;
-        $account->person_code = $request->p_code;
-        $account->bank_code = $request->a_code;
+        $account->credit_num = $request->p_code;
+        $account->iban = $request->a_code;
         $account->amount = $request->amount;
 
         $account->save();
@@ -53,8 +53,8 @@ class BankController extends Controller
     {
         $bank->name = $request->name;
         $bank->email = $request->email;
-        $bank->person_code = $request->p_code;
-        $bank->bank_code = $request->a_code;
+        $bank->credit_num = $request->p_code;
+        $bank->iban = $request->a_code;
         $bank->amount = $request->amount;
         $bank->save();
         return redirect()->route('bank_index');
@@ -78,7 +78,7 @@ class BankController extends Controller
         $bank->save();
         foreach (Bank::all() as $account)
         {
-            if ($account->bank_code === $request->toAccount) {
+            if ($account->iban === $request->toAccount) {
                 $account->amount += $request->suma;
                 $account->save();
             }

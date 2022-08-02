@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h1>All accounts</h1>
@@ -23,9 +23,9 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">personal CODE</th>
-                                        <th scope="col">acc code</th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">Client Name</th>
+                                        <th scope="col">iban code</th>
                                         <th scope="col">amount</th>
                                         <th style="display: flex; justify-content: flex-end;" scope="col">edit | destroy | transfer</th>
                                     </tr>
@@ -35,8 +35,8 @@
                                         @forelse($accounts as $account)
                                             <th scope="row">{{$account->id}}</th>
                                             <td>{{$account->email}}</td>
-                                            <td>{{$account->person_code}}</td>
-                                            <td>{{$account->bank_code}}</td>
+                                            <td>{{$account->name}}</td>
+                                            <td>{{$account->iban}}</td>
                                             <td>{{$account->amount}}</td>
                                             <td style="display: flex; justify-content: flex-end;"><a class="btn-sm btn-primary" href="{{route('bank_edit', $account)}}">edit</a>
                                                 @if(Auth::user()->role >= 12)

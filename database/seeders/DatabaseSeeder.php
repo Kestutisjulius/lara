@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $colors = collect(['crimson', 'green']);
+        $colors = collect(['crimson', 'green', 'purple']);
 
         do{
         $color = $faker->colorName;
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker->email,
                 'iban' => $faker->iban,
                 'credit_num' => $faker->creditCardNumber,
-
+                'amount' => rand(1, 999000) / 100
             ]);
         }
         $animals = collect(['Donkey', 'Racoon', 'Horse', 'Snake', 'Monkey', 'Chicken', 'Leo', 'Zebra', 'Crocodile', 'Antelope', 'Buffalo']);

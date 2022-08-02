@@ -12,8 +12,8 @@
                             @csrf
                             @method('put')
                             <ul class="list-group list-group-horizontal-sm">
-                                <li class="list-group-item">from: {{$bank->bank_code}}></li>
-                                <li class="list-group-item"><input name="toAccount" type="text" placeholder="accountNumber to transfer"></li>
+                                <li class="list-group-item">(from: IBAN) {{$bank->iban}}></li>
+                                <li class="list-group-item"><input name="toAccount" type="text" placeholder="to IBAN"></li>
                                 <li class="list-group-item"><input name="suma" type="text" placeholder="sum"></li>
                             <button class="btn btn-primary" type="submit" >transfer</button>
                             </ul>

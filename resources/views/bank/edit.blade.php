@@ -13,13 +13,13 @@
                             @method('put')
 
                                 <ul class="list-group list-group-horizontal-sm">
-                                    <li class="list-group-item"><input name="name" type="text" value="{{$bank->name}}"></li>
-                                    <li class="list-group-item"><input name="email" type="text" value="{{$bank->email}}"></li>
-                                    <li class="list-group-item"><input name="p_code" type="text" value="{{$bank->person_code}}"></li>
+                                    <li class="list-group-item">Client:<input name="name" type="text" value="{{$bank->name}}"></li>
+                                    <li class="list-group-item">email:<input name="email" type="text" value="{{$bank->email}}"></li>
+                                    <li class="list-group-item">credit NUM<input name="p_code" type="text" value="{{$bank->credit_num}}"></li>
                                 </ul>
                             <ul class="list-group list-group-horizontal-sm">
-                                <li class="list-group-item"><input name="a_code" type="text" value="{{$bank->bank_code}}"></li>
-                                <li class="list-group-item"><input name="amount" type="text" value="{{$bank->amount}}"></li>
+                                <li class="list-group-item">iban:<input name="a_code" type="text" value="{{$bank->iban}}"></li>
+                                <li class="list-group-item">amount:<input name="amount" type="text" value="{{$bank->amount}}"></li>
                                 <button style="width: 100%" class="btn btn-primary" type="submit" >save</button>
                             </ul>
                         </form>
