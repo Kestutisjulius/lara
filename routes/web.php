@@ -24,6 +24,7 @@ Route::get('/my_orders', [Order::class, 'showMyOrders'])->name('my_orders');
 //CART
 Route::post('/add_animal_to_cart', [Cart::class, 'add'])->name('front_add_cart');
 Route::get('/my-small-cart', [Cart::class, 'show'])->name('small_cart');
+Route::delete('/my-small-cart', [Cart::class, 'clearCard'])->name('small_cart');
 
 
 //ANY

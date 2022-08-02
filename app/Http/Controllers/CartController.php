@@ -25,8 +25,6 @@ class CartController extends Controller
             default : $cart[]=['id'=> $id, 'count'=> $count];
         }
 
-
-
         session()->put('cart', $cart);
         return response()->json([
             'msg'=>'ok'
@@ -54,8 +52,19 @@ class CartController extends Controller
             'html'=>$html
         ]);
     }
-    public function clearCard(){
-        session()->put('cart', []);
+    public function clearCard(Request $request){
+
+        $cart = session()->get('cart', []);
+        $id = (int) $request->id;
+
+        foreach ($cart as $key  => $value){
+            if ($id == $value['id']){
+                unset($cart[$key]);
+                break;
+            }
+        }
+
+        session()->put('cart', $cart);
         return response()->json([
             'msg'=>'cart is cleared'
         ]);
