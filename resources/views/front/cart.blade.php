@@ -16,9 +16,13 @@
             Your cart empty ?
             @endforelse
         </span>
-        <a class="dropdown-item" href="">
-        <span class="clear--cart">CLEAR</span>
-        </a>
+        <span class="dropdown-item">
+            <form action="{{route('front_add')}}" method="post" class="form-control">
+                @csrf
+        <button class="btn btn-dark btn-sm buy--cart" type="submit">BUY</button>
+            </form>
+        </span>
+
 
 
     </div>

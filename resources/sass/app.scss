@@ -104,15 +104,17 @@ h1.nice {
             padding: 6px;
             border-radius: 6px;
         }
+
         h6{
             margin: 8px;
             background-color:  rgb(255,255,255, 0.5);
-            width: 130px;
+            width: 200px;
             height: 30px;
             padding: 6px;
             vertical-align: middle;
             border: 1px solid black;
             border-radius: 6px;
+            text-align: center;
 
         }
     }
@@ -246,4 +248,9 @@ h1.nice {
         margin-left: 5px;
         border-radius: 5px;
     }
+}
+.card-header{
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding-top: 15px;
 }

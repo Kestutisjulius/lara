@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Order;
+use App\Models\WildAnimal as Animal;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -13,29 +14,53 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = Order::orderBy('id', 'desc')->get();
+        $orders->map(function($order){
+            $cart = json_decode($order->order, 1);
+            $id= array_map(fn($product)=>$product['id'], $cart);
+            $cartCollection = collect([...$cart]);
+            $order->animals = Animal::whereIn('id', $id)->get()->map(function($animal) use ($cartCollection){
+                $animal->count = $cartCollection->first(fn($elementas)=>$elementas['id'] == $animal->id)['count'];
+                return $animal;
+            });
+            return $order;
+        });
+        $orders = $orders->map(function ($order){
+            $time = Carbon::create($order->created_at)->timezone('Europe/Vilnius');
+            $order->time = $time->format('Y-M-d (H:i:s)');
+            return $order;
+        });
         return view('order.index', ['orders'=>$orders]);
     }
 
     public function add(Request $request)
     {
         $order = new Order;
-        $order->count = $request->animal_count;
-        $order->animal_id = $request->animal_id;
+
+        $order->order=json_encode($request->session()->get('cart', []));
+        session()->put('cart', []);
         $order->user_id = Auth::user()->id;
         $order->save();
-        return redirect()->route('my_orders')->with('success', 'ANIMAL to ORDER added successfully');
+        return redirect()->route('my_orders');
     }
 
     public function showMyOrders()
     {
         $orders = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $orders->map(function($order){
+            $cart = json_decode($order->order, 1);
+            $id= array_map(fn($product)=>$product['id'], $cart);
+            $cartCollection = collect([...$cart]);
+            $order->animals = Animal::whereIn('id', $id)->get()->map(function($animal) use ($cartCollection){
+                $animal->count = $cartCollection->first(fn($elementas)=>$elementas['id'] == $animal->id)['count'];
+                return $animal;
+            });
+            return $order;
+        });
         $orders = $orders->map(function ($order){
             $time = Carbon::create($order->created_at)->timezone('Europe/Vilnius');
         $order->time = $time->format('Y-M-d (H:i:s)');
         return $order;
         });
-
-//        dd($orders);
         return view('front.orders', ['orders'=>$orders]);
     }
 
