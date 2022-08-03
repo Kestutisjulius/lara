@@ -8,6 +8,7 @@ use App\Models\WildAnimal as Animal;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -78,6 +79,25 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
         return redirect()->back()->with('success', 'updated');
+    }
+
+    public function getPDF(Order $order){
+
+
+
+            $cart = json_decode($order->order, 1);
+            $id= array_map(fn($product)=>$product['id'], $cart);
+            $cartCollection = collect([...$cart]);
+            $order->animals = Animal::whereIn('id', $id)->get()->map(function($animal) use ($cartCollection){
+                $animal->count = $cartCollection->first(fn($elementas)=>$elementas['id'] == $animal->id)['count'];
+                return $animal;
+            });
+
+
+
+        $pdf = Pdf::loadView('order.pdf', ['order' => $order]);
+
+        return $pdf->download('order-'.$order->id.'.pdf');
     }
 
 }

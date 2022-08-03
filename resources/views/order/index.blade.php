@@ -43,7 +43,7 @@
                                 @endforeach
                             </ul>
 
-                            <div class="card-body">
+                            <div class="card-body row-cols-1">
                                 <form action="{{route('status_update', $order)}}" method="post" enctype="multipart/form-data">
                                     @method('put')
                                     @csrf
@@ -59,6 +59,7 @@
                                     </div>
                                     <button class="btn btn-outline-success mt-4" type="submit">confirm</button>
                                 </form>
+                                    <a href="{{route('pdf', $order)}}" class="btn btn-outline-primary mt-4 ">create PDF</a>
                             </div>
                         </div>
                     </div>

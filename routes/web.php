@@ -22,6 +22,8 @@ Route::get('/', [Front::class, 'index'] )->name('front_index');
 Route::post('/add_animal_to_order', [Order::class, 'add'])->name('front_add');
 Route::get('/my_orders', [Order::class, 'showMyOrders'])->name('my_orders');
 Route::put('/order_status/{order}', [Order::class, 'update'])->name('status_update');
+Route::get('/pdf/{order}', [Order::class, 'getPDF'])->name('pdf');
+
 //CART
 Route::post('/add_animal_to_cart', [Cart::class, 'add'])->name('front_add_cart');
 Route::get('/my-small-cart', [Cart::class, 'show'])->name('small_cart');
