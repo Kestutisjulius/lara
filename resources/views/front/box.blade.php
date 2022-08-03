@@ -1,5 +1,5 @@
 <div class="row justify-content-center mb-0">
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="card-header">sort, filter & search box</div>
         <div class="card-body">
             <form class="form-control " action="{{route('front_index')}}" method="get">

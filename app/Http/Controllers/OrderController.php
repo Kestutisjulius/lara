@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
+    /**
+     * @var int[]
+     */
+    private static array $status= ['admin'=>1, 'confirmed'=>2, 'rejected'=>3, 'attention needed'=>4];
+
     public function index(Request $request)
     {
         $orders = Order::orderBy('id', 'desc')->get();
@@ -29,7 +35,10 @@ class OrderController extends Controller
             $order->time = $time->format('Y-M-d (H:i:s)');
             return $order;
         });
-        return view('order.index', ['orders'=>$orders]);
+
+
+
+        return view('order.index', ['orders'=>$orders, 'status'=>OrderController::$status]);
     }
 
     public function add(Request $request)
@@ -45,6 +54,7 @@ class OrderController extends Controller
 
     public function showMyOrders()
     {
+
         $orders = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         $orders->map(function($order){
             $cart = json_decode($order->order, 1);
@@ -61,7 +71,13 @@ class OrderController extends Controller
         $order->time = $time->format('Y-M-d (H:i:s)');
         return $order;
         });
-        return view('front.orders', ['orders'=>$orders]);
+        return view('front.orders', ['orders'=>$orders, 'status'=>OrderController::$status]);
+    }
+
+    public function update(Request $request, Order $order){
+        $order->status = $request->status;
+        $order->save();
+        return redirect()->back()->with('success', 'updated');
     }
 
 }

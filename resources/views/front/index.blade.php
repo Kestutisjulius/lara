@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center ">
                 @include('front.box')
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card ">
                     <div class="card-header">
                         <h6>animals</h6>

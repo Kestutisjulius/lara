@@ -17,7 +17,7 @@
                                         <div class="front-bin">
                                             <div class="front-box justify-content-between" style="background: {{$animal->ecolor->color}};">
                                                 <h6>{{$animal->ecolor->title}}</h6>
-                                                <h6> have: <strong>[ {{$animal->count}} ]</strong> units</h6>
+                                                <h6><strong>[ {{$animal->count}} ]</strong> units</h6>
 
                                                 <h2>{{$animal->name}}</h2>
 
@@ -31,7 +31,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">Card title</h5>
+                                                        <h5 class="card-title">CARD title</h5>
                                                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                                     </div>
@@ -42,6 +42,24 @@
                                     </li>
                                 @endforeach
                             </ul>
+
+                            <div class="card-body">
+                                <form action="{{route('status_update', $order)}}" method="post" enctype="multipart/form-data">
+                                    @method('put')
+                                    @csrf
+                                    <div class="form-group">
+                                        <label>status?</label>
+                                        <select class="form-control" name="status">
+                                            @foreach($status as $key => $value)
+                                                <option value="{{$value}}" @if($order->status == $value) selected @endif>{{$key}}</option>
+
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-outline-success mt-4" type="submit">confirm</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
 
