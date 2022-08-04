@@ -23,3 +23,11 @@ register to app/Http/Kernel.php //
 composer require intervention/image //for change images like photoEditor
 //PDF
 composer require barryvdh/laravel-dompdf
+//+React
+composer require laravel/breeze --dev
+php artisan breeze:install react
+npm install
+php artisan migrate
+//Many to many
+composer require josezenem/laravel-make-migration-pivot
+php artisan make:pivot Master Skill
