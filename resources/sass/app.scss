@@ -254,3 +254,27 @@ h1.nice {
     color: #e2e8f0;
     padding-top: 15px;
 }
+.master-bin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .controls {
+        display: flex;
+    }
+    .master-box {
+
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+
+            margin: 0;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px white;
+            color: black;
+        }
+    }
+}

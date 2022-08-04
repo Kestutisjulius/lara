@@ -58,6 +58,12 @@
                         @else
 
                             <!-- START mano meniu -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{route('show_masters')}}" >
+                                    Masters
+                                </a>
+                            </li>
                             @if(Auth::user()->role >= 2)
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

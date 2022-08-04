@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController as U;
 use App\Http\Controllers\FrontController as Front;
 use App\Http\Controllers\OrderController AS Order;
 use App\Http\Controllers\CartController AS Cart;
+use App\Http\Controllers\MasterController AS Master;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -91,6 +92,10 @@ Route::get('/order', [Order::class, 'index'])->name('all_orders')->middleware('r
 
 //Auth
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Masters
+Route::get('/masters', [Master::class, 'index'])->name('show_masters');
+Route::get('/master/edit/{master}', [Master::class, 'edit'])->name('edit_master');
+Route::put('/master/update/{master}', [Master::class, 'update'])->name('update_master');
+Route::delete('/master/del/{master}', [Master::class, 'destroy'])->name('remove_master');

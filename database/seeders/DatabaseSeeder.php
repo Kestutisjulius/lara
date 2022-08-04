@@ -76,5 +76,16 @@ class DatabaseSeeder extends Seeder
                 ]
             );
         }
+        foreach (range(1, 11) as $_) {
+            DB::table('masters')->insert(
+                ['master_name' => $faker->name]
+            );
+        }
+        $skils = ['Dancer', 'Cat Striker', 'Rogiu rato chengeris', 'sukejas', 'klijuotojas', 'Lakuotojas', 'Dazytojas', 'katinu Pardavejas', 'kepejas', 'pepsio naikintojas', 'kosmonautas'];
+        foreach ($skils as $skill) {
+            DB::table('skills')->insert(
+                ['skill' => $skill]
+            );
+        }
     }
 }
