@@ -13,7 +13,7 @@ php artisan migrate:rollback --path=database/migrations/2022_07_05_175806_create
 composer require --dev beyondcode/laravel-dump-server
 composer require laravel/ui
 composer install
-php artisan ui vue --auth
+php artisan ui bootstrap --auth
 npm install
 npm run dev
 change [styles & scripts lines to vite] in "resources/views/layouts/app.blade.php" // @vite(['resources/sass/app.scss', 'resources/js/app.js'])
